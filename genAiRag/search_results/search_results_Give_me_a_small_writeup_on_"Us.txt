@@ -1,0 +1,30 @@
+=== From 2025-01-14 - CartGenius - Growth - Kickstart.pdf (Chunk 20/28) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2025-solos
+Geoshape queries  Geowithin queries  Near queries  Atlas search aggregation best practices  Atlas search scoring overview The potential drawbacks and overhead that Atlas search might introduce into a cluster were also explained to the team. Since the cluster is currently on M10 general with limited IOPS of 1000 colocated atlas search can interfere with the disk IOPS of the overall cluster whenever the search indexes are rebuilt. Hence it was recommended that the team Copyright 2025 MongoDB Inc. 9 of 13 CONFIDENTIAL Ja v aScript Ja v aScript carefully monitor their balance of the clusters disk IOPS performance and geospatial query efficiency if they decide to move this query pattern to atlas search. 3.6 Schema optimizations During the engagement the schema patterns for all the collections being stored in MongoDB were reviewed and correspondingly some optimizations were discussed.
+
+================================================================================
+
+=== From 2025-01-08 - HoiChoi - Optimize - Boost.pdf (Chunk 25/31) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2025-solos
+Thank you David for accommodating our wonderful and memorable stay in Honolulu Hawaii. God Bless! Henry  Jacqui SF CA  path  reviews.comments  score   boost   value  16     autocomplete   query  Our stay was excellent  path  reviews.comments  score   boost  value 10         Furthermore another slow query involved a regex based elemMatch stage that the team was doing as follows. Copyright 2025 MongoDB Inc. 13 of 18 CONFIDENTIAL Ja v aScript Ja v aScript Ja v aScript localizedInfo   elemMatch   titleDisplayUnlimited   regex   regularExpression   pattern  Taranath Tantrik  options  i      Hence it was recommended that the team move this query to Atlas search to improve the query performance as follows. Atlas search index  mappings   dynamic  false fields   localizedInfo   type  document  fields   titleDisplayUnlimited   type  string  analyzer  lucene.standard for caseinsensitive pattern        Atlas search regex query.
+
+================================================================================
+
+=== From 2024-12-10 - Ethermail GmbH - Optimize - Ignite.pdf (Chunk 43/51) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2024-solos
+Some of the notable features of Atlas search are as follows Copyright 2024 MongoDB Inc. 23 of 27 CONFIDENTIAL Ja v aScript  Fulltext search  Fuzzy search  Typeahead Autocomplete  Text Scoring  Text highlighting  Support for the five most common Lucene analyzers standard simple whitespace language keyword etc  Support for multiple data types text numerics dates geospatial boolean and objectID Atlas Search queries take the form of an aggregation pipeline stage. The search stage performs a fulltext search on the specified field or fields which must be covered by an Atlas Search index. Normally we see the following definition to be used at the initial stage  mappings   dynamic  true   This definition indexes every field of a document inside the collection due to which the index size can grow very large when there are a lot of fields in a single document. For indexes to perform efficiently it is recommended that indexes should fit in RAM.
+
+================================================================================
+
+=== From 2024-12-10 - Ethermail GmbH - Optimize - Ignite.pdf (Chunk 45/51) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2024-solos
+Copyright 2024 MongoDB Inc. 24 of 27 CONFIDENTIAL 4.7.3 Atlas search performance consider ations It should be kept in mind that search must always be the first stage of the pipeline. Documents can be further filtered down using match if needed to reduce the result set but it can drastically slow down query results. If possible design your search query so that all necessary filtering occurs in the search stage to remove the need for a match stage. The compound Atlas Search operator is helpful for queries that require multiple filtering operations. Hence it should also be noted that Atlas search can become a performance bottleneck if not used correctly. The performance considerations and impact while using Atlas search are documented here Performance Considerations . Further for using searchmatch or searchsort with Atlas search in an optimized way the usecase can be implemented in Atlas search as per the approach mentioned in the documentation using the storedSource .
+
+================================================================================
+
+=== From 2024-12-10 - Ethermail GmbH - Optimize - Ignite.pdf (Chunk 46/51) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2024-solos
+Please refer to the examples shared in the documentation here for more details. Please refer to additional resources below for Atlas Search  Tutorial Build a Movie Search Engine Using Atlas FullText Search in 10 Minutes  Building an Autocomplete Form Element with Atlas Search and JavaScript  Use Atlas Search for Fulltext queries  Advanced MongoDB Atlas Search Queries 4.8 Sharding The application currently is a single sharded cluster and the team wanted to understand sharding in depth for futuristic usecases. A detailed overview of sharding was provided which involved evaluating the tradeoffs associated with it architecture of MongoDB sharding and best practices around it. Sharding is a horizontal scaling solution that distributes data across multiple machines called shards. Scaling horizontally comes with many benefits by breaking datasets into multiple smaller pieces. Having fewer data per machine allows for smaller or commodity hardware reducing cost and distributing load.
+
+================================================================================
+

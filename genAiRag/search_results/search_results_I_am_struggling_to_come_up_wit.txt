@@ -1,0 +1,30 @@
+=== From 2025-02-04 - Happy Future - Optimize - Kick Start.pdf (Chunk 4/17) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2025-solos
+Monitor whether disk IOPS approaches the maximum provisioned IOPS from configuration page of the cluster. Determine whether the cluster can handle future workloads. For more metrics Refer to Atlas Metrics for more. 3.2 Indexing Strategies Review of the cluster metrics denoted high query targeting ratio being observed along with spikes in disk read IOPS. The Hatchet log analysis tool was used to examine the teams primary replica logs revealing that several queries were missing appropriate indexes. Based on this analysis it was recommended that the team create indexes aligned with their query patterns adhering to MongoDBs indexing best practices. Copyright 2025 MongoDB Inc. 2 of 8 CONFIDENTIAL 3.2.1 Create Optimised Indexes It is recommended that every query in your application is supported by an appropriate index. When adding or modifying your approach to indexing consider the following notes  A compound index can be utilized to satisfy multiple queries.
+
+================================================================================
+
+=== From 2024-12-10 - Ethermail GmbH - Optimize - Ignite.pdf (Chunk 6/51) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2024-solos
+Goals of the Consulting Engagement The primary goal of the engagement was to discuss and help the team with MongoDB indexing strategies cluster performance monitoring and answer the teams queries about the data access best practices for their use case. The topics covered include  Indexing strategies  Data access and schema best practices  Secondary read preference in MongoDB replica sets  Analytics node  MongoDB log analysis tools  Change streams  Atlas views  Sharding Copyright 2024 MongoDB Inc. 4 of 27 CONFIDENTIAL  Atlas search  TTL indexes  Atlas online archive 3. Recommendations Note All recommendations should be tested in a lower environment first before applying them to production. 3.1 Avoid COLLSCANS and slow queries using indexes Priority 1 A review of the clusters MongoDB log analysis using hatchet showed certain operations taking a long time to execute 23 minutes.
+
+================================================================================
+
+=== From 2024-12-16 - Flightsmojo - Optimize - Boost.pdf (Chunk 7/31) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2024-solos
+3.2 Indexing Strategies A review of the metrics showed high query targeting ratio being observed in the cluster  Correspondingly the max disk read IOPS and bytes read into the cache metric showed significant spikes denoting that lots of disk reads were happening Copyright 2024 MongoDB Inc. 3 of 16 CONFIDENTIAL Upon reviewing the clusters collection and data access patterns the team mentioned that they recently moved some of their usecases in nonproduction to MongoDB and wanted to know in depth about the indexing strategy before creating indexes. The same was explained to the team as follows. 3.2.1 Create Optimised Indexes It is recommended that every query in your application is supported by an appropriate index. When adding or modifying your approach to indexing consider the following notes  A compound index can be utilized to satisfy multiple queries.
+
+================================================================================
+
+=== From 2025-01-28 - RUSH Technology - Optimize - Boost.pdf (Chunk 3/14) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2025-solos
+Based on this analysis it was recommended that the team create indexes aligned with their query patterns adhering to MongoDBs indexing best practices. 3.1.1 Create Optimised Indexes It is recommended that every query in your application is supported by an appropriate index. When adding or modifying your approach to indexing consider the following notes Copyright 2025 MongoDB Inc. 2 of 9 CONFIDENTIAL  A compound index can be utilized to satisfy multiple queries. For example if there is a compound index like  a1 b1 c1  this can be utilized to satisfy all the following queries   db.coll.find a3   db.coll.find a3 b5   db.coll.find a3 b5 c8   db.coll.find b5 a3   Wherever possible try to use covered queries  as covered queries provide better query execution time. In the case of the covered queries wiredtiger doesnt need to fetch the documents from the diskfile system cache and the result set can be satisfied via Indexes itself.
+
+================================================================================
+
+=== From 2025-01-08 - HoiChoi - Optimize - Boost.pdf (Chunk 5/31) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2025-solos
+Copyright 2025 MongoDB Inc. 2 of 18 CONFIDENTIAL 3.2 Indexing Strategies Review of the cluster metrics denoted high query targeting ratio being observed along with spikes in disk throughput and bytes read into the cache metrics detailed in section 3.10 . The query profiler was used to review slow queries revealing that some aggregations were either lacking necessary indexes resulting in collection scans COLLSCANS or were not fully covered by existing compound indexes. Based on this analysis it was recommended that the team create indexes aligned with their query patterns adhering to MongoDBs indexing best practices. 3.2.1 Create Optimised Indexes It is recommended that every query in your application is supported by an appropriate index. When adding or modifying your approach to indexing consider the following notes  A compound index can be utilized to satisfy multiple queries.
+
+================================================================================
+

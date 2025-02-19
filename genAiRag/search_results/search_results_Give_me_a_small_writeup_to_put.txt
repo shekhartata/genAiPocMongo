@@ -1,0 +1,30 @@
+=== From 2024-12-10 - Ethermail GmbH - Optimize - Ignite.pdf (Chunk 3/51) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2024-solos
+Recommendations 3.1 Avoid COLLSCANS and slow queries using indexes Priority 1 3.2 Review and delete redundant indexes Priority 1 3.3 Offset adverts read cron jobs to Secondary read preference Priority 1 3.4 Use materialized views to filter out the eligible users from ems.contacts collection Priority 1 3.5 Avoid having null fields in schema Priority 2 3.6 Implement lazy loading techniques to avoid loading entire data set Priority 2 3.6.1 Projections 3.6.2 Pagination 3.6.3 Schema changes 3.7 Use Analytics node for Analyzing transactions and smart contracts data Priority 2 3.8 Use msgid uid as compound indexed shard key for wildduck.messages collection Priority 3 4. Other Discussions 4.1 Change Streams 4.1.1 Best Practices while using Change Streams 4.2 Atlas Online Archive 4.2.1 Overview 4.2.2 Pricing 4.2.3 Restoring From Archive 4.2.4 What are the limitations of the Online Archive?
+
+================================================================================
+
+=== From 2025-01-24 - Simpplr - Optimize - Boost.pdf (Chunk 20/34) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2025-solos
+For more information on TTL indexes please refer to the official documentation here . 3.6 Moving text search queries to Atlas search The team currently uses MongoDB text indexes for their textbased exact match query patterns and Atlas search for some of the autocomplete type usecases. It was recommended that the team can utilize Atlas search for both these purposes to improve their query performance. The team can follow the below sample query format on a sample collection to combine both exact match and autocomplete results in one query and manipulate the scores. Index definition on reviews.comments field  mappings   dynamic  false fields   Copyright 2025 MongoDB Inc. 9 of 16 CONFIDENTIAL Ja v aScript reviews   fields   comments    type  string   foldDiacritics  false maxGrams  7  minGrams  3  type  autocomplete    type  document      Corresponding Atlas search query  search   index  default12  compound   should    text   query  Our stay was excellent. The place had a breathtaking view.
+
+================================================================================
+
+=== From 2025-01-29 - Skill Rev - Optimize - Boost.pdf (Chunk 17/25) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2025-solos
+One key concept that emerged was predicate caching a technique that involves indexing specific field values rather than indexing the entire field as done in traditional indexes. A useful MongoDB indexing feature for this approach is Partial Indexes . The recommendation was to track the most frequent query patterns and identify the range of values queried most often. To do this effectively it was suggested that the team use Atlas Scheduled Triggers see section 3.8  to periodically query this Atlas Admin API . This would allow them to retrieve the top K slowest queries pinpoint the exact value ranges for frequently queried fields and monitor these ranges over time. Once identified partial indexes could be created on these highcardinality fields improving query performance by targeting only the necessary subsets of data. This approach helps ensure that the indexing strategy remains optimized as query patterns evolve without overloading the database with unnecessary indexes.
+
+================================================================================
+
+=== From 2025-01-08 - HoiChoi - Optimize - Boost.pdf (Chunk 25/31) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2025-solos
+Thank you David for accommodating our wonderful and memorable stay in Honolulu Hawaii. God Bless! Henry  Jacqui SF CA  path  reviews.comments  score   boost   value  16     autocomplete   query  Our stay was excellent  path  reviews.comments  score   boost  value 10         Furthermore another slow query involved a regex based elemMatch stage that the team was doing as follows. Copyright 2025 MongoDB Inc. 13 of 18 CONFIDENTIAL Ja v aScript Ja v aScript Ja v aScript localizedInfo   elemMatch   titleDisplayUnlimited   regex   regularExpression   pattern  Taranath Tantrik  options  i      Hence it was recommended that the team move this query to Atlas search to improve the query performance as follows. Atlas search index  mappings   dynamic  false fields   localizedInfo   type  document  fields   titleDisplayUnlimited   type  string  analyzer  lucene.standard for caseinsensitive pattern        Atlas search regex query.
+
+================================================================================
+
+=== From 2024-12-19 - UMT - Optimize - Accelerate.pdf (Chunk 5/76) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2024-solos
+Other Discussions 4.1 Atlas Online Archive 4.1.1 Overview 4.1.2 Pricing 4.1.3 Restoring From Archive 4.1.4 What are the limitations of the Online Archive? 4.2 Atlas Metrics 4.3 Hatchet log analysis tool 4.4 Indexing strategy and best practices 4.4.1 Create Optimised Indexes 4.4.2 Create compound indexes to help with sorting 4.4.3 ESR Rule 4.4.3.1 E Equality First 4.4.3.2 E  S Equality before Sort 4.4.3.3 S  R Sort before Range 4.5 Atlas Search Overview 4.5.1 Atlas search overview 4.5.2 Modifying score in Atlas Search queries 4.5.3 Atlas search performance considerations C o p y r i g h t 2 0 2 4 M o n g o D B  I n c . 2 o f 2 5 CONFIDENTIAL 4.6 Time series collections in MongoDB 4.7 Network compression 5. Recommended Further Consulting and Training 5.1 Consulting 5.2 Training C o p y r i g h t 2 0 2 4 M o n g o D B  I n c . 3 o f 2 5 CONFIDENTIAL 1.
+
+================================================================================
+

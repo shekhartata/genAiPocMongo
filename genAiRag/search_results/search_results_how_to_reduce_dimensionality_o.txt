@@ -1,0 +1,30 @@
+=== From 2024-12-10 - Ethermail GmbH - Optimize - Ignite.pdf (Chunk 4/51) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2024-solos
+4.3 Atlas Metrics 4.4 Hatchet log analysis tool 4.5 Indexing strategy and best practices 4.5.1 Create Optimised Indexes 4.5.2 Create compound indexes to help with sorting 4.5.3 ESR Rule 3.2.3.1 E Equality First 3.2.3.2 E  S Equality before Sort 3.2.3.3 S  R Sort before Range 4.6 TTL Indexes 4.7 Atlas Search Overview 4.7.1 Atlas search overview 4.7.2 Modifying score in Atlas Search queries Copyright 2024 MongoDB Inc. 2 of 27 CONFIDENTIAL 4.7.3 Atlas search performance considerations 4.8 Sharding 4.8.1 Config Servers 4.8.2 Shards 4.8.3 Mongos 4.8.4 Selecting a good shard key 6. Recommended Further Consulting and Training 6.1 Consulting 6.2 Training Copyright 2024 MongoDB Inc. 3 of 27 CONFIDENTIAL 1. Background 1.1 Application The Ethermail team has a Web3 emailing application that allows anonymous communication between Web3 users.
+
+================================================================================
+
+=== From 2025-02-04 - Happy Future - Optimize - Kick Start.pdf (Chunk 15/17) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2025-solos
+It was recommended that the team use NonMaterialized Views for storing the required fields being queried on aggregations. This will reduce the read surface area and can potentially speed up the query performance. A MongoDB NonMaterialized View is a queryable object whose contents are defined by an aggregation pipeline on other collections or views. MongoDB does not persist the nonmaterialized views contents to disk. Notes 1. Views must be created in the same database as the source collection. 2. Views are readonly write operations on views will error. 3. Views use the indexes of the underlying collection and it is not possible to create drop or rebuild indexes on the view directly nor get a list of indexes on the view. Copyright 2025 MongoDB Inc. 7 of 8 CONFIDENTIAL Unset Unset 3.6 Hatchet Log Analysis Tool During the engagement ways to monitor logs and observe the slow query patterns was discussed and the primary tool used in this discussion was Hatchet.
+
+================================================================================
+
+=== From 2024-12-10 - Ethermail GmbH - Optimize - Ignite.pdf (Chunk 45/51) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2024-solos
+Copyright 2024 MongoDB Inc. 24 of 27 CONFIDENTIAL 4.7.3 Atlas search performance consider ations It should be kept in mind that search must always be the first stage of the pipeline. Documents can be further filtered down using match if needed to reduce the result set but it can drastically slow down query results. If possible design your search query so that all necessary filtering occurs in the search stage to remove the need for a match stage. The compound Atlas Search operator is helpful for queries that require multiple filtering operations. Hence it should also be noted that Atlas search can become a performance bottleneck if not used correctly. The performance considerations and impact while using Atlas search are documented here Performance Considerations . Further for using searchmatch or searchsort with Atlas search in an optimized way the usecase can be implemented in Atlas search as per the approach mentioned in the documentation using the storedSource .
+
+================================================================================
+
+=== From 2025-01-08 - HoiChoi - Optimize - Boost.pdf (Chunk 5/31) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2025-solos
+Copyright 2025 MongoDB Inc. 2 of 18 CONFIDENTIAL 3.2 Indexing Strategies Review of the cluster metrics denoted high query targeting ratio being observed along with spikes in disk throughput and bytes read into the cache metrics detailed in section 3.10 . The query profiler was used to review slow queries revealing that some aggregations were either lacking necessary indexes resulting in collection scans COLLSCANS or were not fully covered by existing compound indexes. Based on this analysis it was recommended that the team create indexes aligned with their query patterns adhering to MongoDBs indexing best practices. 3.2.1 Create Optimised Indexes It is recommended that every query in your application is supported by an appropriate index. When adding or modifying your approach to indexing consider the following notes  A compound index can be utilized to satisfy multiple queries.
+
+================================================================================
+
+=== From 2025-01-28 - RUSH Technology - Optimize - Boost.pdf (Chunk 3/14) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2025-solos
+Based on this analysis it was recommended that the team create indexes aligned with their query patterns adhering to MongoDBs indexing best practices. 3.1.1 Create Optimised Indexes It is recommended that every query in your application is supported by an appropriate index. When adding or modifying your approach to indexing consider the following notes Copyright 2025 MongoDB Inc. 2 of 9 CONFIDENTIAL  A compound index can be utilized to satisfy multiple queries. For example if there is a compound index like  a1 b1 c1  this can be utilized to satisfy all the following queries   db.coll.find a3   db.coll.find a3 b5   db.coll.find a3 b5 c8   db.coll.find b5 a3   Wherever possible try to use covered queries  as covered queries provide better query execution time. In the case of the covered queries wiredtiger doesnt need to fetch the documents from the diskfile system cache and the result set can be satisfied via Indexes itself.
+
+================================================================================
+
