@@ -1,0 +1,30 @@
+=== From 2024-12-10 - Ethermail GmbH - Optimize - Ignite.pdf (Chunk 51/51) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2024-solos
+Recommended Further Consulting and Training 6.1 Consulting The recommendations shared for the MongoDB indexing data access pattern optimizations and schema optimization will improve the cluster and application performance and bring clarity to MongoDBs Best Practices. Further it is highly recommended to engage with MongoDB Professional Services again once the recommended changes are implemented for further performance analysis. 6.2 Training MongoDB offers a comprehensive set of instructorled training courses covering all aspects of building and running applications with MongoDB. Instructorled training is the fastest and best way to learn MongoDB in depth. Both public and private training classes are available  for more information or to enroll in classes see Instructor Led Training. Copyright 2024 MongoDB Inc. 27 of 27 CONFIDENTIAL
+
+================================================================================
+
+=== From 2025-01-24 - Simpplr - Optimize - Boost.pdf (Chunk 27/34) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2025-solos
+For this usecase utility of causally consistent sessions was discussed. Causally consistent sessions in MongoDB ensure that operations are executed in an order that respects their causal relationships providing a consistent view of the data. This is particularly important in distributed systems where operations may be performed on different nodes. It works by providing a clusterwide logical clock variable called cluster_time which can be accessed across different connections and nodes to maintain the consistent order of operations being executed on the database. How It Works  Start a Client Session  The client starts a session which guarantees causal consistency for read operations with majority read concern and write operations with majority write concern. Issue Operations  The client issues a sequence of read and write operations including the session information with each operation.
+
+================================================================================
+
+=== From 2025-01-28 - RUSH Technology - Optimize - Boost.pdf (Chunk 3/14) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2025-solos
+Based on this analysis it was recommended that the team create indexes aligned with their query patterns adhering to MongoDBs indexing best practices. 3.1.1 Create Optimised Indexes It is recommended that every query in your application is supported by an appropriate index. When adding or modifying your approach to indexing consider the following notes Copyright 2025 MongoDB Inc. 2 of 9 CONFIDENTIAL  A compound index can be utilized to satisfy multiple queries. For example if there is a compound index like  a1 b1 c1  this can be utilized to satisfy all the following queries   db.coll.find a3   db.coll.find a3 b5   db.coll.find a3 b5 c8   db.coll.find b5 a3   Wherever possible try to use covered queries  as covered queries provide better query execution time. In the case of the covered queries wiredtiger doesnt need to fetch the documents from the diskfile system cache and the result set can be satisfied via Indexes itself.
+
+================================================================================
+
+=== From 2025-01-08 - HoiChoi - Optimize - Boost.pdf (Chunk 5/31) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2025-solos
+Copyright 2025 MongoDB Inc. 2 of 18 CONFIDENTIAL 3.2 Indexing Strategies Review of the cluster metrics denoted high query targeting ratio being observed along with spikes in disk throughput and bytes read into the cache metrics detailed in section 3.10 . The query profiler was used to review slow queries revealing that some aggregations were either lacking necessary indexes resulting in collection scans COLLSCANS or were not fully covered by existing compound indexes. Based on this analysis it was recommended that the team create indexes aligned with their query patterns adhering to MongoDBs indexing best practices. 3.2.1 Create Optimised Indexes It is recommended that every query in your application is supported by an appropriate index. When adding or modifying your approach to indexing consider the following notes  A compound index can be utilized to satisfy multiple queries.
+
+================================================================================
+
+=== From 2025-01-29 - Skill Rev - Optimize - Boost.pdf (Chunk 17/25) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2025-solos
+One key concept that emerged was predicate caching a technique that involves indexing specific field values rather than indexing the entire field as done in traditional indexes. A useful MongoDB indexing feature for this approach is Partial Indexes . The recommendation was to track the most frequent query patterns and identify the range of values queried most often. To do this effectively it was suggested that the team use Atlas Scheduled Triggers see section 3.8  to periodically query this Atlas Admin API . This would allow them to retrieve the top K slowest queries pinpoint the exact value ranges for frequently queried fields and monitor these ranges over time. Once identified partial indexes could be created on these highcardinality fields improving query performance by targeting only the necessary subsets of data. This approach helps ensure that the indexing strategy remains optimized as query patterns evolve without overloading the database with unnecessary indexes.
+
+================================================================================
+

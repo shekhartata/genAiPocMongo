@@ -1,0 +1,30 @@
+=== From 2024-12-26 - MixTiles - Optimize - Kickstart.pdf (Chunk 22/39) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2024-solos
+3.2.4 Checking Index usage and dropping unused indexes T h e t e a m c a n a l s o u s e t h e f o l l o w i n g a g g r e g a t i o n o n c o l l e c t i o n s t o i d e n t i f y u n u s e d o r i n f r e q u e n t l y u s e d i n d e x e s  a s s e s s t h e i r r e l e v a n c e i n s u p p o r t i n g c r i t i c a l b u s i n e s s q u e r i e s  a n d t h e n e v a l u a t e t h e i r p e r f o r m a n c e . B a s e d o n t h i s a n a l y s i s  t h e t e a m c a n d e c i d e t o h i d e o r r e m o v e t h e s e i n d e x e s a c c o r d i n g l y . Note Sometimes depending on the read preference index might not be showing as utilized at all hence run the below aggregation on all replicas of the replica set. Collect statistics about the indexes C o p y r i g h t 2 0 2 4 M o n g o D B  I n c .
+
+================================================================================
+
+=== From 2024-12-26 - MixTiles - Optimize - Kickstart.pdf (Chunk 11/39) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2024-solos
+T h e P e r f o r m a n c e a d v i s o r c r e a t e i n d e x r e c o m m e n d a t i o n s c r e e n s h o w e d orders c o l l e c t i o n h a v i n g 5 1 i n d e x e s  s o m e o f w h i c h w e r e i d e n t i f i e d a s r e d u n d a n t i n d e x e s w h i c h a r e n o l o n g e r r e q u i r e d . C o p y r i g h t 2 0 2 4 M o n g o D B  I n c . 4 o f 1 4 CONFIDENTIAL H e n c e i t w a s r e c o m m e n d e d t h a t t h e t e a m f o l l o w M o n g o D B i n d e x i n g b e s t p r a c t i c e s w h i l e c r e a t i n g a n d d r o p p i n g i n d e x e s . T h e s a m e i s e x p l a i n e d a s f o l l o w s . C o p y r i g h t 2 0 2 4 M o n g o D B  I n c . 5 o f 1 4 CONFIDENTIAL 3.2.1 Create Optimised Indexes I t i s r e c o m m e n d e d t h a t e v e r y q u e r y i n y o u r a p p l i c a t i o n i s s u p p o r t e d b y a n a p p r o p r i a t e i n d e x .
+
+================================================================================
+
+=== From 2024-12-23 - EasyTranslate - Optimize - Kickstart.pdf (Chunk 27/50) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2024-solos
+3.4.1 Create Optimised Indexes I t i s r e c o m m e n d e d t h a t e v e r y q u e r y i n y o u r a p p l i c a t i o n i s s u p p o r t e d b y a n a p p r o p r i a t e i n d e x . W h e n a d d i n g o r m o d i f y i n g y o u r a p p r o a c h t o i n d e x i n g  c o n s i d e r t h e f o l l o w i n g n o t e s   A c o m p o u n d i n d e x c a n b e u t i l i z e d t o s a t i s f y m u l t i p l e q u e r i e s . F o r e x a m p l e  i f t h e r e i s a c o m p o u n d i n d e x l i k ea1b1c1 t h i s c a n b e u t i l i z e d t o s a t i s f y a l l t h e f o l l o w i n g q u e r i e s  db.coll.finda3 db.coll.finda3b5 db.coll.finda3b5c8 db.coll.findb5a3  W h e r e v e r p o s s i b l e t r y t o u s e covered queries  a s c o v e r e d q u e r i e s p r o v i d e b e t t e r q u e r y e x e c u t i o n t i m e .
+
+================================================================================
+
+=== From 2025-02-05 - Bluesemi - Optimize - Kickstart.pdf (Chunk 5/17) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2025-solos
+The queries were reviewed and appropriate indexes were recommended to the team keeping the below mentioned best practices and efficient indexing strategies in mind. 3.3.1 Create optimised indexes It is recommended that every query in your application is supported by an appropriate index. When adding or modifying your approach to indexing consider the following notes  A compound index can be utilized to satisfy multiple queries. For example if there is a compound index like  a1 b1 c1  this can be utilized to satisfy all the following queries   db.coll.find a3   db.coll.find a3 b5   db.coll.find a3 b5 c8   db.coll.find b5 a3   Wherever possible try to use covered queries  as covered queries provide better query execution time. In the case of the covered queries wiredtiger doesnt need to fetch the documents from the diskfile system cache and the result set can be satisfied via Indexes itself.
+
+================================================================================
+
+=== From 2024-12-12 - StormWind Studios LLC - Optimize - Boost.pdf (Chunk 12/41) ===
+Directory: /Users/chandrashekhartata/Desktop/Consulting reports/Solos/2024-solos
+I t w a s r e c o m m e n d e d t o c r e a t e I n d e x e s f o l l o w i n g M o n g o D B b e s t p r a c t i c e s f o r t h e q u e r i e s h a v i n g s o r t s t a g e t o a v o i d h a v i n g i n  m e m o r y s o r t s w h i c h l e a d s t o s p i k e s i n C P U u t i l i z a t i o n . 3.2.1 Create Optimised Indexes I t i s r e c o m m e n d e d t h a t e v e r y q u e r y i n y o u r a p p l i c a t i o n i s s u p p o r t e d b y a n a p p r o p r i a t e i n d e x . W h e n a d d i n g o r m o d i f y i n g y o u r a p p r o a c h t o i n d e x i n g  c o n s i d e r t h e f o l l o w i n g n o t e s   A c o m p o u n d i n d e x c a n b e u t i l i z e d t o s a t i s f y m u l t i p l e q u e r i e s .
+
+================================================================================
+
