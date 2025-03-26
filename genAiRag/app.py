@@ -85,7 +85,7 @@ def main():
     ### Tips:
     - Ask specific questions about MongoDB
     - Questions can be about architecture, performance, indexing, etc.
-    - The system searches through PDF documents to find relevant information
+    - The system searches through TXT and CSV files to find relevant information
     - Responses are generated based on the found context
     """)
 

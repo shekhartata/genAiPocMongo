@@ -1,4 +1,4 @@
-import PyPDF2
+import csv
 from pathlib import Path
 from typing import List, Dict
 import os
@@ -57,17 +57,30 @@ class DocumentProcessor:
             raise ValueError(f"Documents path does not exist: {self.documents_path}")
         logger.info(f"Initialized DocumentProcessor with path: {self.documents_path}")
 
-    def extract_text_from_pdf(self, file_path: Path) -> str:
+    def extract_text_from_txt(self, file_path: Path) -> str:
+        """Extract text from a .txt file"""
         try:
-            text = ""
-            with open(file_path, "rb") as file:
-                pdf_reader = PyPDF2.PdfReader(file)
-                for page_num, page in enumerate(pdf_reader.pages):
-                    text += page.extract_text() + "\n"
-            logger.info(f"Successfully extracted text from PDF: {file_path.name}")
+            with open(file_path, 'r', encoding='utf-8') as file:
+                text = file.read()
+            logger.info(f"Successfully extracted text from TXT file: {file_path.name}")
             return text
         except Exception as e:
-            logger.error(f"Error processing PDF {file_path.name}: {str(e)}")
+            logger.error(f"Error processing TXT file {file_path.name}: {str(e)}")
+            return ""
+
+    def extract_text_from_csv(self, file_path: Path) -> str:
+        """Extract text from a .csv file"""
+        try:
+            text = ""
+            with open(file_path, 'r', encoding='utf-8') as file:
+                csv_reader = csv.reader(file)
+                # Convert CSV data to a text format
+                for row in csv_reader:
+                    text += " | ".join(row) + "\n"
+            logger.info(f"Successfully extracted text from CSV file: {file_path.name}")
+            return text
+        except Exception as e:
+            logger.error(f"Error processing CSV file {file_path.name}: {str(e)}")
             return ""
 
     def preprocess_text(self, text: str) -> str:
@@ -145,12 +158,20 @@ class DocumentProcessor:
         logger.info(f"Starting document processing in: {self.documents_path}")
         
         for file_path in self.documents_path.rglob("*"):
-            if file_path.suffix.lower() != ".pdf":
+            file_ext = file_path.suffix.lower()
+            
+            if file_ext not in ['.txt', '.csv']:
                 continue
 
             logger.info(f"Processing file: {file_path.name} from directory: {file_path.parent}")
             
-            text = self.extract_text_from_pdf(file_path)
+            # Extract text based on file type
+            if file_ext == '.txt':
+                text = self.extract_text_from_txt(file_path)
+            elif file_ext == '.csv':
+                text = self.extract_text_from_csv(file_path)
+            else:
+                continue
 
             if text.strip():
                 # Create semantic chunks from the text
@@ -166,11 +187,12 @@ class DocumentProcessor:
                         "text": chunk,
                         "file_path": str(file_path),
                         "relative_path": str(relative_path),
-                        "directory": str(file_path.parent)
+                        "directory": str(file_path.parent),
+                        "file_type": file_ext[1:]  # Store file type without dot
                     })
                 
                 processed_count += 1
                 logger.info(f"Successfully processed {file_path.name} into {len(chunks)} semantic chunks")
 
-        logger.info(f"Completed processing {processed_count} PDF documents into {len(documents)} semantic chunks recursively")
+        logger.info(f"Completed processing {processed_count} text/CSV documents into {len(documents)} semantic chunks recursively")
         return documents 
